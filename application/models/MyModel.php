@@ -113,4 +113,38 @@ class MyModel extends CI_Model
 		return $this->db->affected_rows();
 	}
 
+	public function get_pemesanan($id='')
+	{
+		if ($id == "") {
+			$this->db->select('*');
+			$this->db->from('pemesanan');
+			$this->db->order_by('id_pemesanan', 'DESC');
+			return $this->db->get()->result_array();
+		} else {
+			$this->db->select('*');
+			$this->db->from('pemesanan');
+			$this->db->where('id_pemesanan',$id);
+			$this->db->order_by('id_pemesanan', 'DESC');
+			return $this->db->get()->result_array();
+		}
+	}
+
+	public function post_pemesanan($data)
+	{
+		$this->db->insert('pemesanan',$data);
+		return $this->db->affected_rows() ;
+	}
+
+	public function put_pemesanan($id,$data)
+	{
+		$this->db->update('pemesanan',$data,['id_pemesanan'=>$id]);
+		return $this->db->affected_rows();
+	}
+
+	public function delete_pemesanan($id)
+	{
+		$this->db->delete('pemesanan',['id_pemesanan'=>$id]);
+		return $this->db->affected_rows();
+	}
+
 }
