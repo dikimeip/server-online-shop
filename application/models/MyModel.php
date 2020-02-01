@@ -60,4 +60,22 @@ class MyModel extends CI_Model
 			return $this->db->get()->result_array();
 		}
 	}
+
+	public function post_user($data)
+	{
+		$this->db->insert('user',$data);
+		return $this->db->affected_rows() ;
+	}
+
+	public function put_user($id,$data)
+	{
+		$this->db->update('user',$data,['id_user'=>$id]);
+		return $this->db->affected_rows();
+	}
+
+	public function delete_user($id)
+	{
+		$this->db->delete('user',['id_user'=>$id]);
+		return $this->db->affected_rows();
+	}
 }

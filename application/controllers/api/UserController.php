@@ -54,5 +54,78 @@ class UserController extends REST_Controller
 		}
 		
 	}
+
+	public function index_post()
+	{
+		$data = [
+			'username' => $this->post('username'),
+			'password' => $this->post('password'),
+			'email' => $this->post('email'),
+			'no_hp' => $this->post('hp'),
+			'alamat' => $this->post('alamat'),
+			'tanggal_user' => date('Y-m-d') ,
+		];
+
+		if ($this->Model->post_user($data) > 0 ) {
+			if ($data) {
+				$this->response([
+					'status' => 1,
+					'value' => 'User Upload Finish'
+				]);
+			} else {
+				$this->response([
+					'status' => 0,
+					'value' => 'User Upload Filed'
+				]);
+			}
+		}
+	}
+
+	public function index_put()
+	{
+		$id = $this->put('id');
+		$data = [
+			'username' => $this->put('username'),
+			'password' => $this->put('password'),
+			'email' => $this->put('email'),
+			'no_hp' => $this->put('hp'),
+			'alamat' => $this->put('alamat'),
+		];
+
+		if ($this->Model->put_user($id,$data)) {
+			$this->response([
+					'status' => 1,
+					'value' => 'Update Success'
+				]);
+		} else {
+			$this->response([
+					'status' => 0,
+					'value' => 'Update Filed'
+				]);
+		}
+	}
+
+	public function index_delete()
+	{
+		$id = $_GET['id'];
+		if ($id == "") {
+			$this->response([
+					'status' => 0,
+					'value' => 'Id Not Found'
+				]);
+		} else {
+			if ($this->Model->delete_user($id)) {
+				$this->response([
+					'status' => 1,
+					'value' => 'Finish Delete'
+				]);
+			} else {
+				$this->response([
+					'status' => 0,
+					'value' => 'Failed Delete'
+				]);
+			}
+		}
+	}
 	
 }
