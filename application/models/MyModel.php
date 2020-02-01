@@ -78,4 +78,39 @@ class MyModel extends CI_Model
 		$this->db->delete('user',['id_user'=>$id]);
 		return $this->db->affected_rows();
 	}
+
+	public function get_sale($id='')
+	{
+		if ($id == "") {
+			$this->db->select('*');
+			$this->db->from('flash_sale');
+			$this->db->order_by('id_flash', 'DESC');
+			return $this->db->get()->result_array();
+		} else {
+			$this->db->select('*');
+			$this->db->from('flash_sale');
+			$this->db->where('id_flash',$id);
+			$this->db->order_by('id_flash', 'DESC');
+			return $this->db->get()->result_array();
+		}
+	}
+
+	public function post_flash($data)
+	{
+		$this->db->insert('flash_sale',$data);
+		return $this->db->affected_rows() ;
+	}
+
+	public function put_sale($id,$data)
+	{
+		$this->db->update('flash_sale',$data,['id_flash'=>$id]);
+		return $this->db->affected_rows();
+	}
+
+	public function delete_sale($id)
+	{
+		$this->db->delete('flash_sale',['id_flash'=>$id]);
+		return $this->db->affected_rows();
+	}
+
 }
