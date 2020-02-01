@@ -36,7 +36,7 @@ class FlashController extends REST_Controller
 			} else {
 				$this->response([
 					'status' => 0,
-					'value' => 'User Not Found'
+					'value' => 'Flash Not Found'
 				]);
 			}
 		} else {
@@ -49,7 +49,7 @@ class FlashController extends REST_Controller
 			} else {
 				$this->response([
 					'status' => 0,
-					'value' => 'User Not Found'
+					'value' => 'Flash Not Found'
 				]);
 			}
 		}	

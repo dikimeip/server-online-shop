@@ -14,7 +14,7 @@ if($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
 require APPPATH . 'libraries/REST_Controller.php';
 require APPPATH . 'libraries/Format.php';
 
-class PemesananController extends REST_Controller
+class AlertController extends REST_Controller
 {
 	public function __construct()
 	{
@@ -26,7 +26,7 @@ class PemesananController extends REST_Controller
 	{
 		$id = $this->get('id');
 		if ($id === "") {
-			$data = $this->Model->get_pemesanan();
+			$data = $this->Model->get_alert();
 			if ($data) {
 				$this->response([
 					'status' => 1,
@@ -35,11 +35,11 @@ class PemesananController extends REST_Controller
 			} else {
 				$this->response([
 					'status' => 0,
-					'value' => 'Pemesanan Not Found'
+					'value' => 'Alert Not Found'
 				]);
 			}
 		} else {
-			$data = $this->Model->get_pemesanan($id);
+			$data = $this->Model->get_alert($id);
 			if ($data) {
 				$this->response([
 					'status' => 1,
@@ -48,36 +48,30 @@ class PemesananController extends REST_Controller
 			} else {
 				$this->response([
 					'status' => 0,
-					'value' => 'Pemesanan Not Found'
+					'value' => 'Alert Not Found'
 				]);
 			}
-		}
-		
+		}	
 	}
 
 	public function index_post()
 	{
 		$data = [
-			'id_produk' => $this->post('id_produk'),
-			'id_user' => $this->post('id_user'),
-			'jumlah' => $this->post('jumlah'),
-			'total' => $this->post('total'),
+			'judul' => $this->post('judul'),
+			'isi' => $this->post('isi'),
 			'tanggal' => date('Y-m-d') ,
-			'ket_pemesanan' => $this->post('ket'),
-			'status_kirim' => 'Proses Pembayaran',
-			'invoice' => $this->post('invoice'),
 		];
 
-		if ($this->Model->post_pemesanan($data) > 0 ) {
+		if ($this->Model->post_alert($data) > 0 ) {
 			if ($data) {
 				$this->response([
 					'status' => 1,
-					'value' => 'User Upload Finish'
+					'value' => 'Alert Upload Finish'
 				]);
 			} else {
 				$this->response([
 					'status' => 0,
-					'value' => 'User Upload Filed'
+					'value' => 'Alert Upload Filed'
 				]);
 			}
 		}
@@ -87,15 +81,11 @@ class PemesananController extends REST_Controller
 	{
 		$id = $this->put('id');
 		$data = [
-			'id_produk' => $this->put('id_produk'),
-			'id_user' => $this->put('id_user'),
-			'jumlah' => $this->put('jumlah'),
-			'total' => $this->put('total'),
-			'ket_pemesanan' => $this->put('ket'),
-			'status_kirim' => $this->put('status'),
+			'judul' => $this->put('judul'),
+			'isi' => $this->put('isi'),
 		];
 
-		if ($this->Model->put_pemesanan($id,$data)) {
+		if ($this->Model->put_alert($id,$data)) {
 			$this->response([
 					'status' => 1,
 					'value' => 'Update Success'
@@ -117,7 +107,7 @@ class PemesananController extends REST_Controller
 					'value' => 'Id Not Found'
 				]);
 		} else {
-			if ($this->Model->delete_pemesanan($id)) {
+			if ($this->Model->delete_alert($id)) {
 				$this->response([
 					'status' => 1,
 					'value' => 'Finish Delete'

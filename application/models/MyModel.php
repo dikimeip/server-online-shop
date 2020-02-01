@@ -147,4 +147,37 @@ class MyModel extends CI_Model
 		return $this->db->affected_rows();
 	}
 
+	public function get_alert($id='')
+	{
+		if ($id == "") {
+			$this->db->select('*');
+			$this->db->from('alert');
+			$this->db->order_by('id_alert', 'DESC');
+			return $this->db->get()->result_array();
+		} else {
+			$this->db->select('*');
+			$this->db->from('alert');
+			$this->db->where('id_alert',$id);
+			$this->db->order_by('id_alert', 'DESC');
+			return $this->db->get()->result_array();
+		}
+	}
+
+	public function post_alert($data)
+	{
+		$this->db->insert('alert',$data);
+		return $this->db->affected_rows() ;
+	}
+	public function put_alert($id,$data)
+	{
+		$this->db->update('alert',$data,['id_alert'=>$id]);
+		return $this->db->affected_rows();
+	}
+
+	public function delete_alert($id)
+	{
+		$this->db->delete('alert',['id_alert'=>$id]);
+		return $this->db->affected_rows();
+	}
+
 }
