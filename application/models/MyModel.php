@@ -180,4 +180,16 @@ class MyModel extends CI_Model
 		return $this->db->affected_rows();
 	}
 
+	public function get_produk_hot($id ='')
+	{
+		if ($id == "") {
+			$this->db->select('*');
+			$this->db->from('produk');
+			$this->db->where('hot_produk','yes');
+			$this->db->limit(5);
+			$this->db->order_by('id_produk', 'DESC');
+			return $this->db->get()->result_array();
+		}
+	}
+
 }
