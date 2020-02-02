@@ -39,6 +39,19 @@ class ProdukAll extends REST_Controller
 					'value' => 'Produk Not Found'
 				]);
 			}
+		} elseif ($id == "NEWPRODUK") {
+			$data = $this->Model->get_produk_all();
+			if ($data) {
+				$this->response([
+					'status' => 1,
+					'value' => $data
+				]);
+			} else {
+				$this->response([
+					'status' => 0,
+					'value' => 'Produk Not Found'
+				]);
+			}
 		}
 	}
 	

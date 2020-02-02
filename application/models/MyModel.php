@@ -192,4 +192,15 @@ class MyModel extends CI_Model
 		}
 	}
 
+	public function get_produk_all($id ='')
+	{
+		if ($id == "") {
+			$this->db->select('*');
+			$this->db->from('produk');
+			$this->db->limit(5);
+			$this->db->order_by('id_produk', 'DESC');
+			return $this->db->get()->result_array();
+		}
+	}
+
 }
