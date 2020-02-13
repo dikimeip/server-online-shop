@@ -52,6 +52,136 @@ class ProdukAll extends REST_Controller
 					'value' => 'Produk Not Found'
 				]);
 			}
+		} elseif ($id == "pria") {
+			$data = $this->Model->get_produk_pria();
+			if ($data) {
+				$this->response([
+					'status' => 1,
+					'value' => $data
+				]);
+			} else {
+				$this->response([
+					'status' => 0,
+					'value' => 'Produk Not Found'
+				]);
+			}
+		} elseif ($id == "wanita") {
+			$data = $this->Model->get_produk_wanita();
+			if ($data) {
+				$this->response([
+					'status' => 1,
+					'value' => $data
+				]);
+			} else {
+				$this->response([
+					'status' => 0,
+					'value' => 'Produk Not Found'
+				]);
+			}
+		} elseif ($id == "anak"){
+			$data = $this->Model->get_produk_anak();
+			if ($data) {
+				$this->response([
+					'status' => 1,
+					'value' => $data
+				]);
+			} else {
+				$this->response([
+					'status' => 0,
+					'value' => 'Produk Not Found'
+				]);
+			}
+		} elseif ($id == "muslimah"){
+			$data = $this->Model->get_produk_muslimah();
+			if ($data) {
+				$this->response([
+					'status' => 1,
+					'value' => $data
+				]);
+			} else {
+				$this->response([
+					'status' => 0,
+					'value' => 'Produk Not Found'
+				]);
+			}
+		} elseif ($id == "tas"){
+			$data = $this->Model->get_produk_tas();
+			if ($data) {
+				$this->response([
+					'status' => 1,
+					'value' => $data
+				]);
+			} else {
+				$this->response([
+					'status' => 0,
+					'value' => 'Produk Not Found'
+				]);
+			}
+		} elseif ($id == "jaket"){
+			$data = $this->Model->get_produk_jaket();
+			if ($data) {
+				$this->response([
+					'status' => 1,
+					'value' => $data
+				]);
+			} else {
+				$this->response([
+					'status' => 0,
+					'value' => 'Produk Not Found'
+				]);
+			}
+		} elseif ($id == "sepatu"){
+			$data = $this->Model->get_produk_sepatu();
+			if ($data) {
+				$this->response([
+					'status' => 1,
+					'value' => $data
+				]);
+			} else {
+				$this->response([
+					'status' => 0,
+					'value' => 'Produk Not Found'
+				]);
+			}
+		} elseif ($id == "aksesoris"){
+			$data = $this->Model->get_produk_aksesoris();
+			if ($data) {
+				$this->response([
+					'status' => 1,
+					'value' => $data
+				]);
+			} else {
+				$this->response([
+					'status' => 0,
+					'value' => 'Produk Not Found'
+				]);
+			}
+		} elseif ($id == "NEWPRODUKALL"){
+			$data = $this->Model->get_produk_alls();
+			if ($data) {
+				$this->response([
+					'status' => 1,
+					'value' => $data
+				]);
+			} else {
+				$this->response([
+					'status' => 0,
+					'value' => 'Produk Not Found'
+				]);
+			}
+		} elseif ($id == "HOTPRODUKALL"){
+			$data = $this->Model->get_produk_hots();
+			if ($data) {
+				$this->response([
+					'status' => 1,
+					'value' => $data
+				]);
+			} else {
+				$this->response([
+					'status' => 0,
+					'value' => 'Produk Not Found'
+				]);
+			}
 		}
 	}
 	

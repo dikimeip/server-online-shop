@@ -192,6 +192,15 @@ class MyModel extends CI_Model
 		}
 	}
 
+	public function get_produk_hots()
+	{
+		$this->db->select('*');
+		$this->db->from('produk');
+		$this->db->where('hot_produk','yes');
+		$this->db->order_by('id_produk', 'DESC');
+		return $this->db->get()->result_array();
+	}
+
 	public function get_produk_all($id ='')
 	{
 		if ($id == "") {
@@ -201,6 +210,86 @@ class MyModel extends CI_Model
 			$this->db->order_by('id_produk', 'DESC');
 			return $this->db->get()->result_array();
 		}
+	}
+
+	public function get_produk_alls()
+	{
+		$this->db->select('*');
+		$this->db->from('produk');
+		$this->db->order_by('id_produk', 'DESC');
+		return $this->db->get()->result_array();
+	}
+
+	public function get_produk_pria()
+	{
+		$this->db->select('*');
+		$this->db->from('produk');
+		$this->db->where('kategori_produk','pria');
+		$this->db->order_by('id_produk', 'DESC');
+		return $this->db->get()->result_array();
+	}
+
+	public function get_produk_wanita()
+	{
+		$this->db->select('*');
+		$this->db->from('produk');
+		$this->db->where('kategori_produk','wanita');
+		$this->db->order_by('id_produk', 'DESC');
+		return $this->db->get()->result_array();
+	}
+
+	public function get_produk_anak()
+	{
+		$this->db->select('*');
+		$this->db->from('produk');
+		$this->db->where('kategori_produk','anak');
+		$this->db->order_by('id_produk', 'DESC');
+		return $this->db->get()->result_array();
+	}
+
+	public function get_produk_muslimah()
+	{
+		$this->db->select('*');
+		$this->db->from('produk');
+		$this->db->where('kategori_produk','muslimah');
+		$this->db->order_by('id_produk', 'DESC');
+		return $this->db->get()->result_array();
+	}
+
+	public function get_produk_tas()
+	{
+		$this->db->select('*');
+		$this->db->from('produk');
+		$this->db->where('kategori_produk','tas');
+		$this->db->order_by('id_produk', 'DESC');
+		return $this->db->get()->result_array();
+	}
+
+	public function get_produk_jaket()
+	{
+		$this->db->select('*');
+		$this->db->from('produk');
+		$this->db->where('kategori_produk','jaket');
+		$this->db->order_by('id_produk', 'DESC');
+		return $this->db->get()->result_array();
+	}
+
+	public function get_produk_sepatu()
+	{
+		$this->db->select('*');
+		$this->db->from('produk');
+		$this->db->where('kategori_produk','sepatu');
+		$this->db->order_by('id_produk', 'DESC');
+		return $this->db->get()->result_array();
+	}
+
+	public function get_produk_aksesoris()
+	{
+		$this->db->select('*');
+		$this->db->from('produk');
+		$this->db->where('kategori_produk','aksesoris');
+		$this->db->order_by('id_produk', 'DESC');
+		return $this->db->get()->result_array();
 	}
 
 }
