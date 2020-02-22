@@ -123,10 +123,20 @@ class MyModel extends CI_Model
 		} else {
 			$this->db->select('*');
 			$this->db->from('pemesanan');
-			$this->db->where('id_pemesanan',$id);
+			$this->db->where('id_user',$id);
+			$this->db->join('produk','produk.id_produk = pemesanan.id_pemesanan');
 			$this->db->order_by('id_pemesanan', 'DESC');
 			return $this->db->get()->result_array();
 		}
+	}
+
+	public function cari_produk($id)
+	{
+		$this->db->select('*');
+		$this->db->from('produk');
+		$this->db->like('nama_produk', $id);
+		$this->db->order_by('id_produk', 'DESC');
+		return $this->db->get()->result_array();
 	}
 
 	public function post_pemesanan($data)

@@ -63,7 +63,6 @@ class PemesananController extends REST_Controller
 			'jumlah' => $this->post('jumlah'),
 			'total' => $this->post('total'),
 			'tanggal' => date('Y-m-d') ,
-			'ket_pemesanan' => $this->post('ket'),
 			'status_kirim' => 'Proses Pembayaran',
 			'invoice' => $this->post('invoice'),
 		];
@@ -91,7 +90,6 @@ class PemesananController extends REST_Controller
 			'id_user' => $this->put('id_user'),
 			'jumlah' => $this->put('jumlah'),
 			'total' => $this->put('total'),
-			'ket_pemesanan' => $this->put('ket'),
 			'status_kirim' => $this->put('status'),
 		];
 

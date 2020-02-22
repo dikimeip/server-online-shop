@@ -184,5 +184,11 @@ class ProdukAll extends REST_Controller
 			}
 		}
 	}
+
+
+	public function index_post()
+	{
+		$cari = $this->post('cari')
+	}
 	
 }

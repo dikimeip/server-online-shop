@@ -61,7 +61,7 @@ class UserController extends REST_Controller
 			'username' => $this->post('username'),
 			'password' => $this->post('password'),
 			'email' => $this->post('email'),
-			'no_hp' => $this->post('hp'),
+			'no_hp' => $this->post('no'),
 			'alamat' => $this->post('alamat'),
 			'tanggal_user' => date('Y-m-d') ,
 		];

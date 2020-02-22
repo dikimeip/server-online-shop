@@ -22,6 +22,32 @@ class LoginController extends Rest_Controller
 	}
 
 
+	public function index_get()
+	{
+		$id = $this->get('id');
+		if ($id === "") {
+			$this->response([
+				'status' => 1,
+				'value' => "kosong"
+			]);
+		} else {
+			$data = $this->Model->cari_produk($id);
+			if ($data) {
+				$this->response([
+					'status' => 1,
+					'value' => $data
+				]);
+			} else {
+				$this->response([
+					'status' => 0,
+					'value' => 'Pemesanan Not Found'
+				]);
+			}
+		}
+
+	}
+
+
 	public function index_post()
 	{
 		$uname = $this->post('username');
