@@ -11,6 +11,11 @@ class MyModel extends CI_Model
 		return $this->db->get_where('user',['username'=>$uname,'password'=> $password])->row_array() ;
 	}
 
+	public function login_admin($uname,$password)
+	{
+		return $this->db->get_where('admin',['username'=>$uname,'password'=> $password])->row_array() ;
+	}
+
 	public function get_produk($id = '')
 	{
 		if ($id == "") {
